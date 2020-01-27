@@ -11,8 +11,8 @@
         <h4>developer</h4>
       </div>
     </div>
-    <div class="svgContainer" v-for="(im, name, index) in Images" :key="index">
-      <img :class="im.c" :src="im.p" />
+    <div class="svgContainer" >
+      <img v-for="(im, name, index) in Images" :key="index" :class="im.c" :src="im.p" />
     </div>
     <div class="nuxtLogo">
       <img src="img/nuxtLogo.svg" />
