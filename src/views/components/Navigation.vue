@@ -9,7 +9,10 @@
 
 <script>
 export default {
-  name: 'Navigation'
+  name: 'Navigation',
+  methods: {},
+  mounted () {
+  }
 }
 </script>
 

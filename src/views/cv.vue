@@ -19,6 +19,7 @@ import Navigation from './components/Navigation'
 import Footer from './components/cvcomponents/Footer'
 import MainInfo from './components/cvcomponents/MainInfo'
 import Header from './components/cvcomponents/Header'
+
 export default {
   name: 'cv',
   components: { Footer, Header, Navigation, MainInfo },
