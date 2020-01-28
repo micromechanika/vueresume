@@ -12,21 +12,20 @@
         </div>
       </section>
       <section class="contacts">
+
         <div class="links">
-          <img src="../../public/img/cvlinks/npm.svg" alt="" />
-          <img src="../../public/img/cvlinks/git.svg" alt="" />
-          <img src="../../public/img/cvlinks/ld.svg" alt="" />
-          <img src="../../public/img/cvlinks/skype.svg" alt="" />
-          <img src="../../public/img/cvlinks/whatsap.svg" alt="" />
-          <img src="../../public/img/cvlinks/telegram.svg" alt="" />
+          <img v-for="(my,name,index) in Links" :key="index" :src="my.l"/>
         </div>
+
         <address>
           <p>Kharkiv, Ukraine</p>
           <p>+38 (063) 84-6-84-30</p>
           <p>micromechanika@gmail.com</p>
         </address>
+
       </section>
     </header>
+
     <main>
       <div class="grid">
         <section>
@@ -364,10 +363,11 @@ export default {
   },
   methods: {},
   computed: {
-    ...mapGetters(['Images'])
+    ...mapGetters(['Images', 'Links'])
   },
   beforeCreate () {
     this.$store.dispatch('Images')
+    this.$store.dispatch('Links')
   }
 }
 </script>

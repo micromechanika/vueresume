@@ -15,7 +15,7 @@
       <img v-for="(im, name, index) in Images" :key="index" :class="im.c" :src="im.p" />
     </div>
     <div class="nuxtLogo">
-      <img src="img/nuxtLogo.svg" />
+      <img src="../../public/img/nuxtLogo.svg" />
     </div>
   </div>
 </template>
@@ -217,9 +217,13 @@ export default {
   name: 'descktop',
   components: { Navigation },
   data () {
-    return {}
+    return {
+
+    }
   },
-  methods: {},
+  methods: {
+
+  },
   computed: {
     ...mapGetters(['Images'])
   },
@@ -227,4 +231,5 @@ export default {
     this.$store.dispatch('Images')
   }
 }
+
 </script>

@@ -5,19 +5,24 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    images: []
+    images: [],
+    links: []
   },
   getters: {
-    Images: state => state.images
+    Images: state => state.images,
+    Links: state => state.links
   },
   mutations: {
     Images: (state, payload) => {
       state.images = payload
+    },
+    Links: (state, payload) => {
+      state.links = payload
     }
   },
   actions: {
     Images: (context, payload) => {
-      let data = [
+      let images = [
         {
           c: 'angular',
           p: 'img/angular.svg'
@@ -87,7 +92,18 @@ export default new Vuex.Store({
           p: 'img/vue.svg'
         }
       ]
-      context.commit('Images', data)
+      context.commit('Images', images)
+    },
+    Links: (context, payload) => {
+      let links = [
+        { l: 'img/cvlinks/npm.svg' },
+        { l: 'img/cvlinks/git.svg' },
+        { l: 'img/cvlinks/ld.svg' },
+        { l: 'img/cvlinks/skype.svg' },
+        { l: 'img/cvlinks/whatsap.svg' },
+        { l: 'img/cvlinks/telegram.svg' }
+      ]
+      context.commit('Links', links)
     }
   },
   modules: {}
