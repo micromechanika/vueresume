@@ -41,6 +41,7 @@ export default {
       }
 
       function bounce (timeFraction) {
+        // eslint-disable-next-line no-unused-vars
         for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
           if (timeFraction >= (7 - 4 * a) / 11) {
             return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
@@ -58,6 +59,7 @@ export default {
         animate({
           duration: 2e3,
           timing: makeEaseOut(bounce),
+          // eslint-disable-next-line no-return-assign
           draw: process => nav.style.left = process < 0.2 ? to - to * process + 'px' : -2.7 + 'em'
         })
       }
@@ -71,6 +73,7 @@ export default {
             animate({
               duration: 1e3,
               timing: makeEaseOut(bounce),
+              // eslint-disable-next-line no-return-assign
               draw: process => nav.style.left = nav.style.left !== 0 ? to - to * process + 'px' : 0 + 'px'
             })
             break
@@ -88,6 +91,7 @@ export default {
           lookNavbar()
           loop(count)
         }, rand)
+        // eslint-disable-next-line no-unused-expressions
         count > 5 || !!stoploop ? clearTimeout(shakeNavbar) : shakeNavbar
       }
 
@@ -95,6 +99,7 @@ export default {
 
       document.addEventListener('mousemove', showNavbar, true)
       document.addEventListener('click', showNavbar, true)
+      document.addEventListener('Touch', showNavbar, true)
     })()
   }
 }

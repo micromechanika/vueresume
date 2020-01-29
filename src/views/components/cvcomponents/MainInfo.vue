@@ -121,7 +121,6 @@ export default {
         width: 28%;
       }
     }
-
     section {
       margin: 0.5em 0;
 

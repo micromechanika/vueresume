@@ -110,7 +110,9 @@ export default {
       }
 
       function rePosition (d) {
+        // eslint-disable-next-line no-unused-expressions,no-mixed-operators
         d.x + d.vX > w && d.vX > 0 || d.x + d.vX < 0 && d.vX < 0 ? d.vX *= -1 : d.vX
+        // eslint-disable-next-line no-mixed-operators,no-unused-expressions
         d.y + d.vY > h && d.vY > 0 || d.y + d.vY < 0 && d.vY < 0 ? d.vY *= -1 : d.vY
         d.x += d.vX
         d.y += d.vY

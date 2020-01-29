@@ -13,22 +13,8 @@ export default {
   },
   mounted () {
     (function (prop) {
-      function makeEaseOut (timing) {
-        return function (timeFraction) {
-          return 1 - timing(1 - timeFraction)
-        }
-      }
-
       function linear (timeFraction) {
         return timeFraction
-      }
-
-      function bounce (timeFraction) {
-        for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
-          if (timeFraction >= (7 - 4 * a) / 11) {
-            return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
-          }
-        }
       }
 
       const properties = {
@@ -86,7 +72,7 @@ export default {
         })
       }
 
-      document.addEventListener('load', () => {
+      document.addEventListener('DOMContentLoaded', () => {
         let footer = document.querySelector('.cv footer')
         footer.style.display = 'none'
         setInterval(init, 3000)
@@ -107,6 +93,7 @@ export default {
     }
 
     function bounce (timeFraction) {
+      // eslint-disable-next-line no-unused-vars
       for (let a = 0, b = 1, result; 1; a += b, b /= 2) {
         if (timeFraction >= (7 - 4 * a) / 11) {
           return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
@@ -114,20 +101,8 @@ export default {
       }
     }
 
-    function quad (timeFraction) {
-      return Math.pow(timeFraction, 2)
-    }
-
     function easeOutLinear () {
       return makeEaseOut(linear)
-    }
-
-    function easeOutBounce () {
-      return makeEaseOut(bounce)
-    }
-
-    function easeOutQuad () {
-      return makeEaseOut(quad)
     }
 
     setTimeout(() => {
@@ -156,6 +131,7 @@ export default {
       animate({
         duration: 2e3,
         timing: makeEaseOut(bounce),
+        // eslint-disable-next-line no-return-assign
         draw: process => footer.style.top = to * process + 'px'
       })
     }, 10e3)
