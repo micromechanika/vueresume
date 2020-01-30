@@ -1,14 +1,14 @@
 <template>
-  <nav @mouseenter="showNavbar" @mouseleave="hideNavbar">
-    <ul>
-      <li>
-        <router-link to="descktop">Desktop</router-link>
-      </li>
-      <li>
-        <router-link to="cv">CV</router-link>
-      </li>
-    </ul>
-  </nav>
+    <nav>
+      <ul>
+        <li>
+          <router-link to="descktop">Desktop</router-link>
+        </li>
+        <li>
+          <router-link to="cv">CV</router-link>
+        </li>
+      </ul>
+    </nav>
 </template>
 
 <script>
@@ -52,22 +52,23 @@ export default {
 
       requestAnimationFrame(amate)
     },
-    showNavbar: function () {
-      console.log('show')
+    showNavbar: function (e) {
       let to = parseFloat(this.nc.left)
-      this.show = false
-      this.stoploop = true
-      this.animate({
-        duration: 1e3,
-        timing: this.makeEaseOut(this.bounce),
-        draw: process => (this.nav.style.left = this.nav.style.left !== 0 ? to - to * process + 'px' : 0 + 'px')
-      })
-    },
-    hideNavbar: function () {
-      console.log('hide')
-      this.stoploop = false
-      this.show = true
-      this.nav.style.left = -2.7 + 'em'
+
+      switch (true) {
+        case e.clientX < 200 || e.target.closest('nav'):
+          this.stoploop = true
+          this.animate({
+            duration: 1e3,
+            timing: this.makeEaseOut(this.bounce),
+            // eslint-disable-next-line no-return-assign
+            draw: process => this.nav.style.left = this.nav.style.left !== 0 ? to - to * process + 'px' : 0 + 'px'
+          })
+          return
+        default:
+          this.stoploop = false
+          this.nav.style.left = -2.7 + 'em'
+      }
     },
     Random: function (min, max) {
       let rand = min + Math.random() * (max + 1 - min)
@@ -97,9 +98,10 @@ export default {
     this.nav.style.left = -2.7 + 'em'
     this.nc = window.getComputedStyle(this.nav)
     this.loop()
+    document.addEventListener('mousemove', this.showNavbar, true)
+    document.addEventListener('click', this.showNavbar, true)
   },
   computed: {}
-
 }
 </script>
 
@@ -158,14 +160,5 @@ export default {
         }
       }
     }
-  }
-
-  .navbarControl {
-    position: absolute;
-    width: 5em;
-    height: auto;
-    z-index: -1000;
-    left: -1em;
-    top: -1em;
   }
 </style>
