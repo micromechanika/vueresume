@@ -50,7 +50,8 @@ export default {
     showNavbar: function (e) {
       let to = parseFloat(this.nc.left)
       switch (true) {
-        case e.clientX < 100 || e.target.closest('nav'):
+        case e.clientX < 100 :
+          console.log('показал')
           this.stoploop = true
           this.animate({
             duration: 1e3,
@@ -60,6 +61,7 @@ export default {
           break
         default:
           this.stoploop = false
+          console.log('спрятал')
           e.style.left = -2.7 + 'em'
           break
       }
