@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="container">
-      <router-view/>
+      <transition >
+        <router-view/>
+      </transition>
     </div>
   </div>
 </template>
@@ -254,4 +256,5 @@ export default {
     max-width: 1440px;
     margin: 0 auto;
   }
+
 </style>
