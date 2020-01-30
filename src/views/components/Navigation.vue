@@ -1,8 +1,12 @@
 <template>
-  <nav @mousemove="showNavbar">
+  <nav @mouseover="showNavbar" @mouseout="hideNavbar">
     <ul>
-      <li><router-link to="descktop">Desktop</router-link></li>
-      <li><router-link to="cv">CV</router-link></li>
+      <li>
+        <router-link to="descktop">Desktop</router-link>
+      </li>
+      <li>
+        <router-link to="cv">CV</router-link>
+      </li>
     </ul>
   </nav>
 </template>
@@ -30,7 +34,7 @@ export default {
         if (timeFraction >= (7 - 4 * a) / 11) {
           return (
             -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) +
-        Math.pow(b, 2)
+            Math.pow(b, 2)
           )
         }
       }
@@ -47,24 +51,18 @@ export default {
 
       requestAnimationFrame(amate)
     },
-    showNavbar: function (e) {
+    showNavbar: function () {
       let to = parseFloat(this.nc.left)
-      switch (true) {
-        case e.clientX < 100 :
-          console.log('показал')
-          this.stoploop = true
-          this.animate({
-            duration: 1e3,
-            timing: this.makeEaseOut(this.bounce),
-            draw: process => (this.nav.style.left = this.nav.style.left !== 0 ? to - to * process + 'px' : 0 + 'px')
-          })
-          break
-        default:
-          this.stoploop = false
-          console.log('спрятал')
-          e.style.left = -2.7 + 'em'
-          break
-      }
+      this.stoploop = true
+      this.animate({
+        duration: 1e3,
+        timing: this.makeEaseOut(this.bounce),
+        draw: process => (this.nav.style.left = this.nav.style.left !== 0 ? to - to * process + 'px' : 0 + 'px')
+      })
+    },
+    hideNavbar: function () {
+      this.stoploop = false
+      this.nav.style.left = -2.7 + 'em'
     },
     Random: function (min, max) {
       let rand = min + Math.random() * (max + 1 - min)
@@ -94,64 +92,75 @@ export default {
     this.nav.style.left = -2.7 + 'em'
     this.nc = window.getComputedStyle(this.nav)
     this.loop()
-  }
+  },
+  computed: {}
+
 }
 </script>
 
 <style lang="scss">
-  nav {
-    width: 3em;
-    height: 100%;
-    background: linear-gradient(to left, $span 40%, transparent 100%);
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
+nav {
+  width: 3em;
+  height: 100%;
+  background: linear-gradient(to left, $span 40%, transparent 100%);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
 
-    ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      list-style-type: none;
-      padding: 0;
-      margin: 1em;
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 1em;
 
-      li {
-        margin: 0.5em;
-        padding: 0.5em;
-        transform: rotate(90deg);
+    li {
+      margin: 0.5em;
+      padding: 0.5em;
+      transform: rotate(90deg);
 
-        &:hover {
-          transform: rotate(0deg);
-          transition: transform 0.5s ease-in-out;
+      &:hover {
+        transform: rotate(0deg);
+        transition: transform 0.5s ease-in-out;
+      }
+
+      a {
+        @include font-parameters;
+        font-size: 0.65em;
+
+        &:link {
+          color: #1a203c;
+          text-decoration: none;
         }
 
-        a {
-          @include font-parameters;
-          font-size: 0.65em;
+        &:visited {
+          color: $green;
+          text-decoration: none;
+        }
 
-          &:link {
-            color: #1a203c;
-            text-decoration: none;
-          }
+        &:hover {
+          color: #df0000;
+          text-decoration: underline;
+        }
 
-          &:visited {
-            color: $green;
-            text-decoration: none;
-          }
-
-          &:hover {
-            color: #df0000;
-            text-decoration: underline;
-          }
-
-          &:active {
-            color: $green;
-            text-decoration: underline;
-          }
+        &:active {
+          color: $green;
+          text-decoration: underline;
         }
       }
     }
   }
+}
+
+.navbarControl {
+  position: absolute;
+  width: 5em;
+  height: auto;
+  z-index: -1000;
+  left: -1em;
+  top: -1em;
+}
 </style>
