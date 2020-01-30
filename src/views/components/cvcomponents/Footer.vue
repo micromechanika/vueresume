@@ -25,7 +25,12 @@ export default {
   footer {
     left: 4em;
     right: 4em;
-
+    padding-top: 1em;
+    padding-bottom: 1em;
+    @include mQ($tablet) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -43,21 +48,24 @@ export default {
     }
 
     &:before {
-      left: -1em;
-      background: linear-gradient(to right, #ffffff 30%, transparent 100%);
+      left: -3.5em;
+      background-image: linear-gradient(to right, #ffffff 30%, transparent 100%);
+      @include mQ($tablet) {
+        right: -1em;
+      }
     }
 
     &:after {
-      right: -1em;
-      background: linear-gradient(to left, #ffffff 30%, transparent 100%);
+      right: -3.5em;
+      background-image: linear-gradient(to left, #ffffff 30%, transparent 100%);
+      @include mQ($tablet) {
+        right: -1em;
+      }
     }
 
     img {
       width: auto;
-      height: 0.9em;
-      @include mQ($tablet) {
-        height: 1.44em;
-      }
+      height: 1.44em;
     }
   }
 </style>

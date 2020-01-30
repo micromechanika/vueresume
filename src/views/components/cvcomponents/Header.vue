@@ -32,9 +32,10 @@ export default {
       align-items: center;
     }
     .contacts {
-      width: 8em;
+      width: 75%;
       margin: 1em 0;
       @include mQ($tablet) {
+        width: 8em;
         margin: 0;
       }
 

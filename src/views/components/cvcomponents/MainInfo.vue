@@ -116,7 +116,7 @@ export default {
     }
 
     .grid {
-      width: 65%;
+      width: 85%;
       @include mQ($tablet) {
         width: 28%;
       }
@@ -133,38 +133,50 @@ export default {
         padding: 0;
         font-style: normal;
         font-weight: normal;
-        font-size: 0.64em;
+        font-size: 1em;
         line-height: 150%;
         color: $black;
+        @include mQ($tablet) {
+          font-size: 0.64em;
+        }
       }
 
       h3 {
         font-weight: 900;
-        font-size: 0.9em;
+        font-size: 1.4em;
         line-height: 1.08em;
         text-transform: uppercase;
         color: $black;
         padding: 0;
         margin: 0;
+        @include mQ($tablet) {
+          font-size: 0.9em;
+        }
       }
 
       b {
         font-style: normal;
         font-weight: bold;
-        font-size: 0.8em;
+        font-size: 1em;
         line-height: 90%;
         color: $black;
         padding: 0;
         margin: 0;
+        @include mQ($tablet) {
+          font-size: 0.8em;
+        }
       }
 
       span {
         padding: 0.5em;
         font-style: normal;
         font-weight: normal;
-        font-size: 0.8em;
+        font-size: 1em;
         line-height: 150%;
         color: $span;
+        @include mQ($tablet) {
+          font-size: 0.8em;
+        }
       }
     }
   }
