@@ -48,7 +48,7 @@ export default {
     }
 
     &:before {
-      left: -3.5em;
+      left: -4em;
       background-image: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.71));
       @include mQ($tablet) {
         right: -1em;
@@ -56,7 +56,7 @@ export default {
     }
 
     &:after {
-      right: -3.5em;
+      right: -4em;
       background-image: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0.71));
       @include mQ($tablet) {
         right: -1em;
