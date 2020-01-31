@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     images: [],
-    links: []
+    links: [],
+    isNavOpen: false
   },
   getters: {
     Images: state => state.images,
@@ -18,7 +19,9 @@ export default new Vuex.Store({
     },
     Links: (state, payload) => {
       state.links = payload
-    }
+    },
+    toggleNav: (state) => { state.isNavOpen = !state.isNavOpen }
+
   },
   actions: {
     Images: (context, payload) => {

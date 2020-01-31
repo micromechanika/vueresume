@@ -15,7 +15,7 @@
 </style>
 
 <script>
-import Navigation from './components/Navigation'
+import Navigation from './components/navigation/Navigation'
 import Footer from './components/cvcomponents/Footer'
 import MainInfo from './components/cvcomponents/MainInfo'
 import Header from './components/cvcomponents/Header'

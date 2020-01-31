@@ -211,7 +211,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Navigation from './components/Navigation'
+import Navigation from './components/navigation/Navigation'
 export default {
   name: 'descktop',
   components: { Navigation },
