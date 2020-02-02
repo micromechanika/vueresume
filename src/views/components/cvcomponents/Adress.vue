@@ -28,12 +28,15 @@ export default {
 
     p {
       font-weight: 300;
-      font-size: 0.68em;
+      font-size: 1em;
       line-height: 0.92em;
       letter-spacing: 0.01em;
       color: $black;
       margin: 0.5em;
       padding: 0;
+      @include mQ($tablet) {
+        font-size: 0.68em;
+      }
     }
   }
 </style>
