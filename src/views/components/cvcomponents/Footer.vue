@@ -73,6 +73,9 @@ export default {
     animateText: function () {
       const cv = document.querySelector('.cv')
       const p = [...cv.querySelectorAll('p')]
+      const footer = document.querySelector('footer')
+      footer.style.display = 'none'
+
       p.forEach((i, index) => {
         let text = i.outerHTML
         let to = text.length
@@ -123,6 +126,7 @@ export default {
     footerBounce: function () {
       let footer = document.querySelector('.cv footer')
       let cv = document.querySelector('.cv')
+      footer.style.display = 'flex'
 
       let cvH = window.getComputedStyle(cv)
       let fcH = window.getComputedStyle(footer)
@@ -135,13 +139,12 @@ export default {
         // eslint-disable-next-line no-return-assign
         draw: process => footer.style.top = to * process + 'px'
       })
+      setInterval(() => { this.footerMove() }, 3000)
     }
   },
   mounted () {
     this.animateText()
-    this.footerMove()
-    setInterval(this.footerMove, 3000)
-    setTimeout(this.footerBounce(), 10e3)
+    setTimeout(() => { this.footerBounce() }, 10e3)
   },
   beforeCreate () {
     this.$store.dispatch('Images')

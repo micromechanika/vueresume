@@ -38,6 +38,7 @@
 
   .name {
     margin: 0.4em 0.8em;
+
     h1,
     h2 {
       @include font-parameters;
@@ -51,6 +52,7 @@
 
   .developer {
     margin: 0.4em 0.8em;
+
     h3,
     h4 {
       @include font-parameters;
@@ -59,9 +61,11 @@
         font-size: 2.96em;
       }
     }
+
     h3 {
       color: $green;
     }
+
     h4 {
       color: $black;
     }
@@ -217,16 +221,16 @@
 <script>
 import { mapGetters } from 'vuex'
 import Navigation from './components/navigation/Navigation'
+
 export default {
   name: 'descktop',
   components: { Navigation },
   data () {
-    return {
-    }
+    return {}
   },
   methods: {
     RandomV: function (el) {
-      return Math.random() * (el)
+      return Math.random() * el
     },
 
     Random: function (min, max) {
@@ -242,7 +246,11 @@ export default {
 
     makeEaseInOut: function (timing) {
       return function (timeFraction) {
-        if (timeFraction < 0.5) { return timing(2 * timeFraction) / 2 } else { return (2 - timing(2 * (1 - timeFraction))) / 2 }
+        if (timeFraction < 0.5) {
+          return timing(2 * timeFraction) / 2
+        } else {
+          return (2 - timing(2 * (1 - timeFraction))) / 2
+        }
       }
     },
 
@@ -264,7 +272,7 @@ export default {
     },
 
     gS: function (cl) {
-      const i = this.container.querySelector(`.${cl}`)
+      const i = document.querySelector(`.${cl}`)
       const elStyle = window.getComputedStyle(i)
       let w = parseFloat(elStyle.width)
       let h = parseFloat(elStyle.height)
@@ -297,9 +305,9 @@ export default {
       e.style.transform = `translate( ${X}px, ${Y}px)`
     },
 
-    letsShake: function () {
-      let x = this.Random(0, this.st.length - 1)
-      let e = this.st[x]
+    letsShake: function (st) {
+      let x = this.Random(0, st.length - 1)
+      let e = st[x]
       let image = e.i
       let elOpacity = 0.45
 
@@ -316,9 +324,9 @@ export default {
       })
     },
 
-    letsRotate: function () {
-      let x = this.Random(0, this.st.length - 1)
-      let e = this.st[x]
+    letsRotate: function (st) {
+      let x = this.Random(0, st.length - 1)
+      let e = st[x]
       let image = e.i
       let elOpacity = 0.45
 
@@ -346,13 +354,17 @@ export default {
         } else {
           image.style.transform = 'rotate(' + 0 + 'deg)'
         }
-      };
+      }
       angularShake()
     },
 
-    init: function (imagesClassList) {
+    imageAnimation: function () {
+      const container = document.querySelector('.desktop .svgContainer')
+      const images = [...container.querySelectorAll('img[src$=".svg"]')]
+      const imagesClassList = [].concat(
+        ...images.map(elt => [...elt.classList])
+      )
       const st = []
-
       imagesClassList.forEach(i => {
         st.push(this.gS(i))
       })
@@ -361,9 +373,9 @@ export default {
       this.animate({
         duration: 8e3,
         timing: this.makeEaseOut(this.linear),
-        draw: (process) => {
-          let x = this.Random(0, this.st.length - 1)
-          let e = this.st[x]
+        draw: process => {
+          let x = this.Random(0, st.length - 1)
+          let e = st[x]
           this.repositionProperty(e.i, e.w, e.W, 'width', process)
         }
       })
@@ -372,9 +384,9 @@ export default {
       this.animate({
         duration: 8e3,
         timing: this.makeEaseOut(this.linear),
-        draw: (process) => {
-          let x = this.Random(0, this.st.length - 1)
-          let e = this.st[x]
+        draw: process => {
+          let x = this.Random(0, st.length - 1)
+          let e = st[x]
           this.repositionProperty(e.i, e.h, e.H, 'height', process)
         }
       })
@@ -383,9 +395,9 @@ export default {
       this.animate({
         duration: 8e3,
         timing: this.makeEaseOut(this.linear),
-        draw: (process) => {
-          let x = this.Random(0, this.st.length - 1)
-          let e = this.st[x]
+        draw: process => {
+          let x = this.Random(0, st.length - 1)
+          let e = st[x]
           this.repositionProperty(e.i, e.t, e.T, 'top', process)
         }
       })
@@ -394,18 +406,22 @@ export default {
       this.animate({
         duration: 8e3,
         timing: this.makeEaseOut(this.linear),
-        draw: (process) => {
-          let x = this.Random(0, this.st.length - 1)
-          let e = this.st[x]
+        draw: process => {
+          let x = this.Random(0, st.length - 1)
+          let e = st[x]
           this.repositionProperty(e.i, e.r, e.R, 'right', process)
         }
       })
 
-      setInterval(this.letsShake, 5e3)
-      setInterval(this.letsRotate, 7e3)
+      setInterval(() => {
+        this.letsShake(st)
+      }, 5e3)
+      setInterval(() => {
+        this.letsRotate(st)
+      }, 7e3)
     },
 
-    stars: function (prop) {
+    starsAnimation: function (prop) {
       const use = {
         test: regexp => regexp.test(window.navigator.userAgent),
         get browser () {
@@ -459,11 +475,17 @@ export default {
       Object.assign(properties, prop)
 
       const body = document.querySelector('.desktop')
-      body.setAttribute('style', '  margin: 0;padding: 0;border: 0;min-width: 300px;min-height: 300px;')
+      body.setAttribute(
+        'style',
+        '  margin: 0;padding: 0;border: 0;min-width: 300px;min-height: 300px;'
+      )
 
       const div = document.createElement('div')
       div.setAttribute('id', 'animation')
-      div.setAttribute('style', `position: absolute;top: 0;left: 0;z-index: -1000;font-size: 0;margin: 0;padding: 0;border: 0;width: 100%;height: 100%;background-color: ${properties.bgcolor};`)
+      div.setAttribute(
+        'style',
+        `position: absolute;top: 0;left: 0;z-index: -1000;font-size: 0;margin: 0;padding: 0;border: 0;width: 100%;height: 100%;background-color: ${properties.bgcolor};`
+      )
       body.appendChild(div)
 
       const canvas = document.createElement('canvas')
@@ -471,8 +493,8 @@ export default {
 
       div.appendChild(canvas)
 
-      let w = canvas.width = properties.cW
-      let h = canvas.height = properties.cH
+      let w = (canvas.width = properties.cW)
+      let h = (canvas.height = properties.cH)
 
       window.onresize = function () {
         w = canvas.width = properties.cW
@@ -484,7 +506,9 @@ export default {
       }
 
       function RandomV () {
-        return parseFloat((Math.random() * (properties.maxV * 2) - properties.maxV).toFixed(3))
+        return parseFloat(
+          (Math.random() * (properties.maxV * 2) - properties.maxV).toFixed(3)
+        )
       }
 
       function RandomL () {
@@ -507,9 +531,13 @@ export default {
 
       function rePosition (d) {
         // eslint-disable-next-line no-unused-expressions,no-mixed-operators
-        d.x + d.vX > w && d.vX > 0 || d.x + d.vX < 0 && d.vX < 0 ? d.vX *= -1 : d.vX
+        (d.x + d.vX > w && d.vX > 0) || (d.x + d.vX < 0 && d.vX < 0)
+          ? (d.vX *= -1)
+          : d.vX;
         // eslint-disable-next-line no-mixed-operators,no-unused-expressions
-        d.y + d.vY > h && d.vY > 0 || d.y + d.vY < 0 && d.vY < 0 ? d.vY *= -1 : d.vY
+        (d.y + d.vY > h && d.vY > 0) || (d.y + d.vY < 0 && d.vY < 0)
+          ? (d.vY *= -1)
+          : d.vY
         d.x += d.vX
         d.y += d.vY
       }
@@ -598,11 +626,8 @@ export default {
     ...mapGetters(['Images'])
   },
   mounted () {
-    // const container = document.querySelector('.svgContainer')
-    // const images = [...container.querySelectorAll('img[src$=".svg"]')]
-    // const imagesClassList = [].concat(...images.map(elt => [...elt.classList]))
-    // this.init(imagesClassList)
-    this.stars({
+    this.imageAnimation()
+    this.starsAnimation({
       bgcolor: '#ffffff',
       dotColor: '#00C58E',
       dotRadius: 1.3,
