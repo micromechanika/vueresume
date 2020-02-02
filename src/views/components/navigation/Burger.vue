@@ -31,8 +31,8 @@ export default {
 <style lang="scss">
   #burger{
     position: absolute;
-    right: 3em;
-    top: 3em;
+    right: 1em;
+    top: 1em;
   }
 
   .hidden {
@@ -50,8 +50,8 @@ export default {
 
   .burger-button {
     position: relative;
-    height: 30px;
-    width: 32px;
+    height: 2.8em;
+    width: 3em;
     display: block;
     z-index: 999;
     border: 0;
@@ -62,7 +62,7 @@ export default {
   }
 
   .burger-bar {
-    background-color: #130f40;
+    background-color: black;
     position: absolute;
     top: 50%;
     right: 6px;
@@ -100,7 +100,7 @@ export default {
   }
 
   #burger.active .burger-bar {
-    background-color: #fff;
+    background-color: $green;
   }
 
   #burger.active .burger-bar--1 {
