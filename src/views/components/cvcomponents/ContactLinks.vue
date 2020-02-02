@@ -32,7 +32,7 @@ export default {
 
   img {
     width: auto;
-    height: 0.65em;
+    height: 0.75em;
     @include mQ($tablet) {
       height: 0.48em;
     }

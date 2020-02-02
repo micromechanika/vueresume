@@ -1,7 +1,7 @@
 <template>
   <div>
-  <Burger/>
-  <NavBar>
+    <Burger/>
+    <NavBar>
       <nav>
         <ul>
           <li>
@@ -19,6 +19,7 @@
 <script>
 import NavBar from './NavBar'
 import Burger from './Burger'
+
 export default {
   name: 'Navigation',
   components: { NavBar, Burger }
@@ -48,6 +49,12 @@ export default {
         margin: 0.5em;
         padding: 0.5em;
         transform: rotate(90deg);
+
+        &:hover {
+          transform: rotate(0deg);
+          transition: transform 0.5s ease-in-out;
+        }
+
         a {
           @include font-parameters;
           font-size: 0.65em;
