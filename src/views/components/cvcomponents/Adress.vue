@@ -1,7 +1,7 @@
 <template>
   <address>
     <p>Kharkiv, Ukraine</p>
-    <p>+38 (063) 84-6-84-30</p>
+    <p><a href="tel:+38 (063) 84-6-84-30" rel="nofollow">+38 (063) 84-6-84-30</a></p>
     <p>micromechanika@gmail.com</p>
   </address>
 </template>
@@ -34,6 +34,11 @@ export default {
       color: $black;
       margin: 0.5em;
       padding: 0;
+
+      a[href^="tel:"] {
+        color: $black;
+        text-decoration: none;
+      }
       @include mQ($tablet) {
         font-size: 0.68em;
       }

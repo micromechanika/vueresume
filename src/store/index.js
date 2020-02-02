@@ -115,7 +115,7 @@ export default new Vuex.Store({
         },
         {
           i: 'img/cvlinks/skype.svg',
-          l: 'href="skype:live:micromechanika?call"'
+          l: 'skype:live:.cid.ec7ff87c44073a89?call'
         },
         {
           i: 'img/cvlinks/whatsap.svg',
