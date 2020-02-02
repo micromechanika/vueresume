@@ -1,6 +1,6 @@
 <template>
   <div class="links">
-    <img v-for="(my, name, index) in Links" :key="index" :src="my.l" />
+    <a v-for="(my, name, index) in Links" :key="index" :href="my.l" target="_blank"><img :key="index" :src="my.i" /></a>
   </div>
 </template>
 

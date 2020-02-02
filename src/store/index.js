@@ -20,7 +20,9 @@ export default new Vuex.Store({
     Links: (state, payload) => {
       state.links = payload
     },
-    toggleNav: (state) => { state.isNavOpen = !state.isNavOpen }
+    toggleNav: (state) => {
+      state.isNavOpen = !state.isNavOpen
+    }
 
   },
   actions: {
@@ -99,12 +101,30 @@ export default new Vuex.Store({
     },
     Links: (context, payload) => {
       let links = [
-        { l: 'img/cvlinks/npm.svg' },
-        { l: 'img/cvlinks/git.svg' },
-        { l: 'img/cvlinks/ld.svg' },
-        { l: 'img/cvlinks/skype.svg' },
-        { l: 'img/cvlinks/whatsap.svg' },
-        { l: 'img/cvlinks/telegram.svg' }
+        {
+          i: 'img/cvlinks/npm.svg',
+          l: 'https://github.com/micromechanika'
+        },
+        {
+          i: 'img/cvlinks/git.svg',
+          l: 'https://github.com/micromechanika'
+        },
+        {
+          i: 'img/cvlinks/ld.svg',
+          l: 'https://www.linkedin.com/in/micromechanika/'
+        },
+        {
+          i: 'img/cvlinks/skype.svg',
+          l: 'href="skype:live:micromechanika?call"'
+        },
+        {
+          i: 'img/cvlinks/whatsap.svg',
+          l: 'https://wa.me/380638468430?text=hello%20from%20github%20resume'
+        },
+        {
+          i: 'img/cvlinks/telegram.svg',
+          l: 'https://t.me/micromechanika'
+        }
       ]
       context.commit('Links', links)
     }
