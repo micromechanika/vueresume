@@ -135,7 +135,7 @@ main {
   .grid {
     width: 85%;
     @include mQ($tablet) {
-      width: 28%;
+      width: 30%;
     }
   }
 
@@ -155,7 +155,7 @@ main {
       line-height: 150%;
       color: $black;
       @include mQ($tablet) {
-        font-size: 0.64em;
+        font-size: .64em;
       }
     }
 

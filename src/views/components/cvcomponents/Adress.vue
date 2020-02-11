@@ -2,7 +2,7 @@
   <address>
     <p>Kharkiv, Ukraine</p>
     <p><a href="tel:+38 (063) 84-6-84-30" rel="nofollow">+38 (063) 84-6-84-30</a></p>
-    <p>micromechanika@gmail.com</p>
+    <p><a href="mailto:micromechanika@gmail.com?Subject=Answer for my resume" target="_top">micromechanika@gmail.com</a></p>
   </address>
 </template>
 
@@ -35,7 +35,7 @@ export default {
       margin: 0.5em;
       padding: 0;
 
-      a[href^="tel:"] {
+      a[href] {
         color: $black;
         text-decoration: none;
       }
