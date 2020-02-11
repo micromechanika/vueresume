@@ -20,7 +20,7 @@
         <div class="info">
           <p>
             <b>Hobbies:</b>
-            programming,reading, biking, travelling, mountaing, orientering.
+            programming, reading, biking, travelling, mountaing, orientering.
           </p>
         </div>
       </section>
@@ -35,10 +35,10 @@
           <p>
             <span>Framework :</span> "Vue JS", "Angular^6", "NUXT", "Express JS", "Telegraf JS", "Codeignater", "Bootstrap"
           </p>
-          <p><span>Languages :</span> "TurboPascal", "php", "JS", "Node JS"</p>
+          <p><span>Languages :</span> "Turbo Pascal", "php", "JS", "Node JS"</p>
           <p><span>VCS :</span> "GIT"</p>
-          <p><span>Databases :</span> "Firebase", "MySQL","MongoDB"</p>
-          <p><span>OOP Patterns :</span> "MVC", "MVVM", "MVP", "Singltone"</p>
+          <p><span>Databases :</span> "Firebase", "MySQL", "MongoDB"</p>
+          <p><span>OOP Patterns :</span> "MVC", "MVVM", "MVP", "Singltone" </p>
           <p><span>Others tools :</span> "Debian"</p>
         </div>
       </section>
@@ -140,7 +140,7 @@ main {
   }
 
   section {
-    margin: 0.5em 0;
+    margin: 1em 0;
 
     .info {
       margin: 0.5em;
