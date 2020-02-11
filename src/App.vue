@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <transition >
+      <transition>
         <router-view/>
       </transition>
     </div>
@@ -33,4 +33,24 @@
     margin: 0 auto;
   }
 
+  @include print() {
+
+    body {
+      background: none !important;
+    }
+
+    #animation, .desktop, #burger, .sidebar, nav, footer, .links {
+      display: none !important;
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 1cm;
+    }
+
+    * {
+      font-size: 11px;
+    }
+
+  }
 </style>

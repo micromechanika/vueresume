@@ -7,13 +7,6 @@
   </div>
 </template>
 
-<style lang="scss">
-.cv {
-  font-size: 2vmax;
-  margin: 1em;
-}
-</style>
-
 <script>
 import Navigation from './components/navigation/Navigation'
 import Footer from './components/cvcomponents/Footer'
@@ -33,3 +26,10 @@ export default {
   beforeUpdate () {}
 }
 </script>
+
+<style lang="scss">
+.cv {
+  font-size: 2vmax;
+  margin: 1em;
+}
+</style>

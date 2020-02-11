@@ -24,3 +24,9 @@ $span: rgba(47, 73, 94, 0.4);
   margin: 0;
   padding: 0;
 }
+
+@mixin print(){
+  @media print {
+    @content
+  }
+}
