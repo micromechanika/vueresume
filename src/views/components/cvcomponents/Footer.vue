@@ -158,10 +158,7 @@ export default {
     right: 4em;
     padding-top: 1em;
     padding-bottom: 1em;
-    @include mQ($tablet) {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
+
     display: flex;
     flex-direction: row;
     justify-content: space-around;

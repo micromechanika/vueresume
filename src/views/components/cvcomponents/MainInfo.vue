@@ -5,10 +5,9 @@
         <h3>Personal</h3>
         <div class="info">
           <p>
-            Hello, my name is Dimitri, I am a strong Junior JS Develop and I'd
-            like to cooperate with you. I have already successfully completed
-            several orders, and now I want to join the team for a set of
-            experience.
+            Hi, my name is Dmytro, I am a FS Develop and I'd like to cooperate
+            with you. My goal to work on a cool project, with the possibility of
+            relocating.
           </p>
         </div>
         <div class="info">
@@ -21,8 +20,26 @@
         <div class="info">
           <p>
             <b>Hobbies:</b>
-            reading, biking, travelling, mountaing, orientering.
+            programming,reading, biking, travelling, mountaing, orientering.
           </p>
+        </div>
+      </section>
+      <section>
+        <h3>Summary</h3>
+        <div class="info">
+          <p><b>Skills that I own :</b></p>
+          <p>
+            <span>Front-end :</span> "HTML5", "CSS3", "ES6", "SVG", "canvas", "JS - animation", "CSS - animation"
+          </p>
+          <p><span>Preprocessors & Bundler :</span> "Webpack", "Gulp", "SCSS"</p>
+          <p>
+            <span>Framework :</span> "Vue JS", "Angular^6", "NUXT", "Express JS", "Telegraf JS", "Codeignater", "Bootstrap"
+          </p>
+          <p><span>Languages :</span> "TurboPascal", "php", "JS", "Node JS"</p>
+          <p><span>VCS :</span> "GIT"</p>
+          <p><span>Databases :</span> "Firebase", "MySQL","MongoDB"</p>
+          <p><span>OOP Patterns :</span> "MVC", "MVVM", "MVP", "Singltone"</p>
+          <p><span>Others tools :</span> "Debian"</p>
         </div>
       </section>
     </div>
@@ -47,13 +64,14 @@
         <div class="info">
           <p><b>SoloLearn:</b> JavaScript Tutorial course</p>
           <p><b>MongoDB Universiry:</b> MongoDB Basics</p>
+          <p><b>Source IT:</b> Web-programing (php)</p>
+          <p><b>Easycode:</b> Frontend (js)</p>
         </div>
       </section>
     </div>
     <div class="grid">
       <section>
         <h3>Education</h3>
-
         <div class="info">
           <b>Higher education:</b>
           <p><span>2004 – 2011</span></p>
@@ -62,22 +80,19 @@
             technologies
           </p>
         </div>
-
         <div class="info">
           <b>Secondary technical education:</b>
           <p><span>2003 – 2004</span></p>
           <p>
-            Kharkiv Profesional polygraphic College, Maintenance of
-            polygraphic machines and typographer
+            Kharkiv Profesional polygraphic College, Maintenance of polygraphic
+            machines and typographer
           </p>
         </div>
-
         <div class="info">
           <b>Additional education:</b>
           <p><span>May 2018 – Oct. 2018</span></p>
           <p>Easycode Frontend (js)</p>
         </div>
-
         <div class="info">
           <p><span>Fab. 2016 – Apr.</span></p>
           <p>2017 SourceIT web-programing (php)</p>
@@ -87,6 +102,8 @@
         <h3>Languages</h3>
         <div class="info">
           <p>English <span>Intermediate</span></p>
+          <p>Ukrainian<span>Native</span></p>
+          <p>Russian<span>Native</span></p>
         </div>
       </section>
     </div>
@@ -100,84 +117,85 @@ export default {
 </script>
 
 <style lang="scss">
-  main {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.5vmin;
+  padding-bottom: 1em;
+  @include mQ($tablet) {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     font-size: 2.5vmin;
-    padding-bottom: 1em;
+  }
+
+  .grid {
+    width: 85%;
     @include mQ($tablet) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      font-size: 2.5vmin;
+      width: 28%;
+    }
+  }
+
+  section {
+    margin: 0.5em 0;
+
+    .info {
+      margin: 0.5em;
     }
 
-    .grid {
-      width: 85%;
+    p {
+      margin: 0.25em 0;
+      padding: 0;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1em;
+      line-height: 150%;
+      color: $black;
       @include mQ($tablet) {
-        width: 28%;
+        font-size: 0.64em;
       }
     }
-    section {
-      margin: 0.5em 0;
 
-      .info {
-        margin: 0.5em;
+    h3 {
+      font-weight: 900;
+      font-size: 1.4em;
+      line-height: 1.08em;
+      text-transform: uppercase;
+      color: $black;
+      padding: 0;
+      margin: 0;
+      @include mQ($tablet) {
+        font-size: 0.9em;
       }
+    }
 
-      p {
-        margin: 0.25em 0;
-        padding: 0;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1em;
-        line-height: 150%;
-        color: $black;
-        @include mQ($tablet) {
-          font-size: 0.64em;
-        }
+    b {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1em;
+      line-height: 90%;
+      color: $black;
+      padding: 0;
+      margin: 0;
+      @include mQ($tablet) {
+        font-size: 0.8em;
       }
+    }
 
-      h3 {
-        font-weight: 900;
-        font-size: 1.4em;
-        line-height: 1.08em;
-        text-transform: uppercase;
-        color: $black;
-        padding: 0;
-        margin: 0;
-        @include mQ($tablet) {
-          font-size: 0.9em;
-        }
-      }
-
-      b {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1em;
-        line-height: 90%;
-        color: $black;
-        padding: 0;
-        margin: 0;
-        @include mQ($tablet) {
-          font-size: 0.8em;
-        }
-      }
-
-      span {
-        padding: 0.5em;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1em;
-        line-height: 150%;
-        color: $span;
-        @include mQ($tablet) {
-          font-size: 0.8em;
-        }
+    span {
+      padding: 0.5em;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1em;
+      line-height: 150%;
+      color: $span;
+      @include mQ($tablet) {
+        font-size: 0.8em;
       }
     }
   }
+}
 </style>
