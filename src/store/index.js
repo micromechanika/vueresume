@@ -7,11 +7,14 @@ export default new Vuex.Store({
   state: {
     images: [],
     links: [],
-    isNavOpen: false
+    certifications: [],
+    isNavOpen: false,
+    isModal: false
   },
   getters: {
     Images: state => state.images,
-    Links: state => state.links
+    Links: state => state.links,
+    Certifications: state => state.certifications
   },
   mutations: {
     Images: (state, payload) => {
@@ -20,8 +23,14 @@ export default new Vuex.Store({
     Links: (state, payload) => {
       state.links = payload
     },
+    Certifications: (state, payload) => {
+      state.certifications = payload
+    },
     toggleNav: (state) => {
       state.isNavOpen = !state.isNavOpen
+    },
+    toggleModal: (state) => {
+      state.isModal = !state.isModal
     }
 
   },
@@ -127,6 +136,17 @@ export default new Vuex.Store({
         }
       ]
       context.commit('Links', links)
+    },
+    Certifications: (context, payload) => {
+      let certificates = [
+        {
+          image: 'certificates/mongo.png'
+        },
+        {
+          image: 'certificates/sololern.png'
+        }
+      ]
+      context.commit('Certifications', certificates)
     }
   },
   modules: {}

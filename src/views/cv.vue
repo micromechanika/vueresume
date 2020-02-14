@@ -1,5 +1,6 @@
 <template>
-  <div class="cv">
+  <div class="cv" >
+    <ModalWindow />
     <Navigation />
     <Header />
     <MainInfo />
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import ModalWindow from './components/cvcomponents/ModalWindow'
 import Navigation from './components/navigation/Navigation'
 import Footer from './components/cvcomponents/Footer'
 import MainInfo from './components/cvcomponents/MainInfo'
@@ -15,15 +17,7 @@ import Header from './components/cvcomponents/Header'
 
 export default {
   name: 'cv',
-  components: { Footer, Header, Navigation, MainInfo },
-  data () {
-    return {}
-  },
-
-  computed: {},
-  beforeMount () {},
-  beforeCreate () {},
-  beforeUpdate () {}
+  components: { Footer, Header, Navigation, MainInfo, ModalWindow }
 }
 </script>
 

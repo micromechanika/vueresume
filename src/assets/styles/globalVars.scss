@@ -10,6 +10,7 @@ $white: #ffffff;
 $green: #00c58e;
 $black: #2e495e;
 $span: rgba(47, 73, 94, 0.4);
+$shadow: rgba(0, 197, 142, 0.22);
 
 @mixin mQ($arg) {
   @media screen and (min-width: $arg) {
