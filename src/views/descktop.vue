@@ -28,9 +28,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import Navigation from './components/navigation/Navigation'
+import { animations } from './components/mixins/animation'
 
 export default {
   name: 'descktop',
+  mixins: [animations],
   components: { Navigation },
   data () {
     return {}
@@ -43,39 +45,6 @@ export default {
     Random: function (min, max) {
       let rand = min + Math.random() * (max + 1 - min)
       return Math.floor(rand)
-    },
-
-    makeEaseOut: function (timing) {
-      return function (timeFraction) {
-        return 1 - timing(1 - timeFraction)
-      }
-    },
-
-    makeEaseInOut: function (timing) {
-      return function (timeFraction) {
-        if (timeFraction < 0.5) {
-          return timing(2 * timeFraction) / 2
-        } else {
-          return (2 - timing(2 * (1 - timeFraction))) / 2
-        }
-      }
-    },
-
-    linear: function (timeFraction) {
-      return timeFraction
-    },
-
-    animate: function (options) {
-      let start = performance.now()
-
-      function amate (time) {
-        let timeFraction = (time - start) / options.duration
-        let progress = options.timing(timeFraction)
-        options.draw(progress)
-        if (timeFraction < 1) requestAnimationFrame(amate)
-      }
-
-      requestAnimationFrame(amate)
     },
 
     gS: function (cl) {
