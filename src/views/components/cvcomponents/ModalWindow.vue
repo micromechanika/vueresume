@@ -1,6 +1,6 @@
 <template>
   <div class="shadow" @click="toggleModal" v-if="isModalShow" >
-    <img v-for="(certificate, name, index) in Certifications" :key="index"  :src="certificate.image" />
+    <img  @mouseout="toggleModal" v-for="(certificate, name, index) in Certifications" :key="index"  :src="certificate.image" />
   </div>
 </template>
 

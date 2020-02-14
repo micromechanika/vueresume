@@ -62,7 +62,7 @@
       <section>
         <h3>Certificates</h3>
         <div class="info">
-          <p @click="toggleModal" @mousemove="toggleModal"><b>SoloLearn:</b> JavaScript Tutorial course</p>
+          <p @click="toggleModal" @mouseover="toggleModal"><b>SoloLearn:</b> JavaScript Tutorial course</p>
           <p><b>MongoDB Universiry:</b> MongoDB Basics</p>
           <p><b>Source IT:</b> Web-programing (php)</p>
           <p><b>Easycode:</b> Frontend (js)</p>
