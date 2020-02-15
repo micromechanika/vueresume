@@ -1,26 +1,30 @@
 <template>
-  <div class="shadow" @click="toggleModal" v-if="isModalShow" >
-    <img  @mouseout="toggleModal" v-for="(certificate, name, index) in Certifications" :key="index"  :src="certificate.image" />
+  <div class="shadow" @click.stop.self="toggleModal" v-if="isModalShow" >
+    <div class="certificate" @mouseleave.stop.self="toggleModal" >
+      <img :src="link" />
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'ModalWindow',
+  props: {
+    link: {
+      type: String,
+      default: 'certificates/sololern.png'
+    }
+  },
   methods: {
     ...mapMutations(['toggleModal'])
   },
   computed: {
-    ...mapGetters(['Certifications']),
     ...mapState({
       isModalShow: function (store) {
         return store.isModal
       }
     })
-  },
-  beforeCreate () {
-    this.$store.dispatch('Certifications')
   }
 }
 </script>
@@ -38,10 +42,17 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .certificate{
+      width: 20em;
+      height: auto;
       img{
-        width: auto;
-        height: 25em;
+        width:100%;
+        height:100%;
+        object-fit: cover;
+        overflow: hidden;
       }
+    }
+
   }
 
 </style>

@@ -140,10 +140,24 @@ export default new Vuex.Store({
     Certifications: (context, payload) => {
       let certificates = [
         {
+          name: 'MongoDB Universiry',
+          course: 'MongoDB Basics',
           image: 'certificates/mongo.png'
         },
         {
+          name: 'SoloLearn',
+          course: 'JavaScript Tutorial course',
           image: 'certificates/sololern.png'
+        },
+        {
+          name: 'Easycode',
+          course: 'Frontend (js)',
+          image: 'certificates/easycode.png'
+        },
+        {
+          name: 'Source IT',
+          course: 'Web-programing (php)',
+          image: 'certificates/sourceIT.png'
         }
       ]
       context.commit('Certifications', certificates)

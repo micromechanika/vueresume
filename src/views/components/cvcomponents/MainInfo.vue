@@ -1,5 +1,6 @@
 <template>
   <main>
+    <ModalWindow :link="selected"/>
     <div class="grid">
       <section>
         <h3>Personal</h3>
@@ -62,10 +63,11 @@
       <section>
         <h3>Certificates</h3>
         <div class="info">
-          <p @click="toggleModal" @mouseover="toggleModal"><b>SoloLearn:</b> JavaScript Tutorial course</p>
-          <p><b>MongoDB Universiry:</b> MongoDB Basics</p>
-          <p><b>Source IT:</b> Web-programing (php)</p>
-          <p><b>Easycode:</b> Frontend (js)</p>
+          <p v-for="(certificate, name, index) in Certifications" :key="index"
+             @click.stop.self="toggleModal(),  selectCertificate(certificate.image)"
+             @mouseenter.stop.self="toggleModal(), selectCertificate(certificate.image)" >
+            <b>{{certificate.name}} : </b>{{certificate.course}}
+          </p>
         </div>
       </section>
     </div>
@@ -111,11 +113,27 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import ModalWindow from './ModalWindow'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'MainInfo',
+  data () {
+    return {
+      selected: ''
+    }
+  },
+  components: { ModalWindow },
   methods: {
-    ...mapMutations(['toggleModal'])
+    ...mapMutations(['toggleModal']),
+    selectCertificate: function (select) {
+      this.selected = select
+    }
+  },
+  computed: {
+    ...mapGetters(['Certifications'])
+  },
+  beforeCreate () {
+    this.$store.dispatch('Certifications')
   }
 }
 </script>
