@@ -4,7 +4,7 @@
 set -e
 
 # сборка
-yarn prod
+npm prod
 
 # переход в каталог сборки
 cd dist
